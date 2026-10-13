@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mavsum — erkaklar va ayollar kiyim do'koni</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a href="#" class="logo"><i class="fa-solid fa-leaf"></i> Mavsum</a>
+  <nav>
+    <a href="#stilist"><i class="fa-solid fa-wand-magic-sparkles"></i> AI stilist</a>
+    <a href="#magazin"><i class="fa-solid fa-bag-shopping"></i> Do'kon</a>
+  </nav>
+  <div class="acts">
+    <button id="userBtn" class="ghost"><i class="fa-regular fa-user"></i> <span>Kirish</span></button>
+    <button id="cartBtn" class="ghost" aria-label="Savatcha"><i class="fa-solid fa-basket-shopping"></i><em id="cnt">0</em></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Rangingizga mos kiyim.<br>Faslingizga mos tanlov.</h1>
+    <p>Rasmingizni yuklang — AI stilist teri va soch rangingizni ko'rib, shu fasl uchun qaysi kiyim yarashishini aytadi.</p>
+    <div class="cta">
+      <a class="btn" href="#stilist"><i class="fa-solid fa-camera"></i> Rasm orqali tanlash</a>
+      <a class="btn alt" href="#magazin"><i class="fa-solid fa-shirt"></i> Kiyimlarni ko'rish</a>
+    </div>
+    <ul class="perks"><li><i class="fa-solid fa-truck-fast"></i> Yetkazib berish</li><li><i class="fa-solid fa-rotate-left"></i> Almashtirish</li><li><i class="fa-solid fa-money-bill-wave"></i> Naqd to'lov</li></ul>
+  </div>
+  <div class="strips" aria-label="Fasllar">
+    <button data-f="s" data-v="bahor" style="background:#A9B7A0"><span>Bahor</span><i class="fa-solid fa-seedling"></i></button>
+    <button data-f="s" data-v="yoz" style="background:#D9CBA3"><span>Yoz</span><i class="fa-solid fa-sun"></i></button>
+    <button data-f="s" data-v="kuz" style="background:#A88B50"><span>Kuz</span><i class="fa-solid fa-leaf"></i></button>
+    <button data-f="s" data-v="qish" style="background:#51657A"><span>Qish</span><i class="fa-regular fa-snowflake"></i></button>
+  </div>
+</section>
+
+<section id="stilist" class="sec">
+  <h2><i class="fa-solid fa-wand-magic-sparkles"></i> AI stilist</h2>
+  <div class="ai">
+    <div class="aiin">
+      <label class="drop" for="file"><img id="prev" alt="" hidden><span id="dropT"><i class="fa-solid fa-camera"></i> Rasm oling yoki yuklang</span></label>
+      <input id="file" type="file" accept="image/*" capture="user" hidden>
+      <div class="two">
+        <select id="gender"><option value="ayol">Ayollar</option><option value="erkak">Erkaklar</option></select>
+        <select id="season"><option value="bahor">Bahor</option><option value="yoz">Yoz</option><option value="kuz">Kuz</option><option value="qish">Qish</option></select>
+      </div>
+      <button id="go" class="btn"><i class="fa-solid fa-wand-magic-sparkles"></i> Menga nima yarashadi?</button>
+      <small>Rasm faqat tahlil uchun OpenAI'ga yuboriladi. Yorug'lik yaxshi joyda, filtrsiz rasm oling.</small>
+    </div>
+    <div id="aiOut" class="aiout"><p class="hint"><i class="fa-solid fa-arrow-left"></i> Natija shu yerda chiqadi</p></div>
+  </div>
+</section>
+
+<section id="magazin" class="sec">
+  <h2><i class="fa-solid fa-bag-shopping"></i> Do'kon</h2>
+  <div class="filters" id="filters">
+    <button data-f="g" data-v="all" class="on">Hammasi</button>
+    <button data-f="g" data-v="m"><i class="fa-solid fa-person"></i> Erkaklar</button>
+    <button data-f="g" data-v="w"><i class="fa-solid fa-person-dress"></i> Ayollar</button>
+    <select id="fs"><option value="all">Barcha fasllar</option><option value="bahor">Bahor</option><option value="yoz">Yoz</option><option value="kuz">Kuz</option><option value="qish">Qish</option></select>
+  </div>
+  <div id="grid" class="grid"></div>
+</section>
+
+<footer><i class="fa-solid fa-leaf"></i> Mavsum · <i class="fa-solid fa-phone"></i> +998 90 000 00 00 · <i class="fa-brands fa-telegram"></i> @mavsum</footer>
+
+<dialog id="authM">
+  <form method="dialog" class="x"><button aria-label="Yopish"><i class="fa-solid fa-xmark"></i></button></form>
+  <div class="tabs"><button class="on" data-t="login">Kirish</button><button data-t="reg">Ro'yxatdan o'tish</button></div>
+  <form id="authF">
+    <input id="aName" placeholder="Ismingiz" autocomplete="name" hidden>
+    <input id="aPhone" type="tel" placeholder="Telefon: +998 90 123 45 67" required>
+    <input id="aPass" type="password" placeholder="Parol (kamida 4 belgi)" minlength="4" required>
+    <button class="btn" id="aBtn">Kirish</button>
+  </form>
+</dialog>
+
+<dialog id="cartD" class="drawer">
+  <form method="dialog" class="x"><button aria-label="Yopish"><i class="fa-solid fa-xmark"></i></button></form>
+  <h3><i class="fa-solid fa-basket-shopping"></i> Savatcha</h3>
+  <div id="cartList"></div>
+  <div class="tot">Jami: <b id="tot">0 so'm</b></div>
+  <button id="checkout" class="btn"><i class="fa-solid fa-check"></i> Buyurtma berish</button>
+</dialog>
+
+<dialog id="orderM">
+  <form method="dialog" class="x"><button aria-label="Yopish"><i class="fa-solid fa-xmark"></i></button></form>
+  <h3><i class="fa-solid fa-truck-fast"></i> Buyurtma ma'lumotlari</h3>
+  <form id="orderF">
+    <input id="oName" placeholder="Ism familiya" required>
+    <input id="oPhone" type="tel" placeholder="Telefon raqam" required>
+    <textarea id="oAddr" rows="3" placeholder="Manzil: viloyat, shahar, ko'cha, uy" required></textarea>
+    <div class="tot">To'lov: <b>yetkazilganda naqd</b></div>
+    <button class="btn"><i class="fa-solid fa-paper-plane"></i> Buyurtmani tasdiqlash</button>
+  </form>
+</dialog>
+
+<div id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
